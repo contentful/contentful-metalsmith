@@ -1,0 +1,8 @@
+{
+  "globalstrict": true,
+  "node": true,
+  "quotmark": "single",
+  "strict": true,
+  "trailing": true,
+  "unused": true
+}

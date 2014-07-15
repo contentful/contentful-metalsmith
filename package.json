@@ -1,0 +1,22 @@
+{
+  "name": "contentful-metalsmith",
+  "version": "0.1.0",
+  "description": "A Metalsmith's plugin to get content from Contentful",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:contentful/contentful-metalsmith.git"
+  },
+  "author": "Contentful GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/contentful/contentful-metalsmith/issues"
+  },
+  "homepage": "https://github.com/contentful/contentful-metalsmith",
+  "dependencies": {
+    "async": "^0.9.0",
+    "contentful": "^0.1.2",
+    "debug": "^1.0.3",
+    "lodash": "^2.4.1"
+  }
+}
