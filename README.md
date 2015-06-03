@@ -145,6 +145,25 @@ In the context of the template rendered for an individual entry you will have ac
 * `contentType`, a shortcut to the entry's contentType.
 * `data`, the body of the entry as returned by [Contentful's Content Delivery API](https://www.contentful.com/developers/documentation/content-delivery-api/)
 
+## Entry filename config
+Following from the example above there are some options to help with getting the structure output:
+```yaml
+  ---
+  title: OMG metalsmith-contentful
+  contentful:
+    space_id: cfexampleapi
+      content_type: cat
+      entry_template: entry.html
+      entry_filename_pattern: :sys.locale/:fields.slug
+      permalink_style: true
+      use_template_extension: true
+  template: example.html
+  ---
+```
+
+* `entry_filename_pattern` takes a pattern similar to the permalink plugin where you can reference Contentful system and user entered fields, prefixed `sys.` and `field.` respectively.
+* `permalink_style` will name a directory with the last part of the pattern and add an `index.html` for the file content. e.g. `my/file/path.html` vs. `my/file/path/index.html`.
+* `use_template_extension` is only required if you want the extension to match the template extension. `.html` is used by default.
 
 # License
 MIT
