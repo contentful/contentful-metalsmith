@@ -127,6 +127,8 @@ An example:
   ---
 ```
 
+If you want to learn more about the filter syntax, check out the [Contentful node module](https://github.com/contentful/contentful.js)
+
 ## Using the fetched entries on the templates
 
 We have to make a distinction between two types of templates:
