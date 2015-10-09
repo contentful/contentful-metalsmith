@@ -107,6 +107,8 @@ To fetch data from [Contentful](http://www.contentful.com) you have to include s
 * `space_id` (**required**), the id of the space from where you want to get entries.
 * `entry_template` (optional), the template that will be used to render each individual entry.
 * `filter` (optional), this parameter has to include some of the [filtering options](https://www.contentful.com/developers/documentation/content-delivery-api/http/#search) offered by the [Contentful's Content Delivery API](https://www.contentful.com/developers/documentation/content-delivery-api/).
+* `limit` (optional), number of responses to return.
+* `order` (optional), specify a field to order responses by. Prefix with a minus sign (-) to reverse ordering.
 
 All this parameters have to be nested under the key `contentful`.
 
@@ -119,10 +121,11 @@ An example:
   title: OMG metalsmith-contentful
   contentful:
     space_id: cfexampleapi
-      content_type: cat
-      filter:
-        sys.id[in]: 'finn,jake'
-      entry_template: entry.html
+    content_type: cat
+    filter: sys.id[in]: 'finn,jake'
+    limit: 200
+    order: fields.date
+    entry_template: entry.html
   template: example.html
   ---
 ```
