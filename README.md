@@ -2,6 +2,14 @@
 
 A Metalsmith's plugin to get content from [Contentful](http://www.contentful.com)
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+## Deprecation notice
+
+This project has not been maintained for some time and won't be maintained moving forward.
+
+While it might work with some older versions of metalsmith, it's known not to work with more recent versions.
+
 ## About
 
 This plugin for [metalsmith](http://www.metalsmith.io) allows you to build a static site using the data stored at [Contentful](http://www.contentful.com). This
