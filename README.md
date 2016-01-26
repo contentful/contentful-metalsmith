@@ -36,6 +36,7 @@ plugin is built on top of the [Contentful JavaScript Client](https://github.com/
           ...,
           "contentful-metalsmith": {
               "accessToken" : "YOUR_CONTENTFUL_ACCESS_TOKEN"
+              "host" : "[cdn|preview].contentful.com"
           },
           ...
         }
