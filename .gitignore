@@ -1,1 +1,4 @@
 node_modules
+.vscode
+test/build
+.nyc_output
