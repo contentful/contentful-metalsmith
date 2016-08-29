@@ -32,9 +32,6 @@
     "proxyquire": "^1.7.10",
     "semantic-release": "^4.3.5"
   },
-  "release": {
-    "debug": true
-  },
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint \"**/*.js\"",
