@@ -1,0 +1,10 @@
+---
+title: test__posts__extentsion
+contentful:
+  content_type: 2wKn6yEnZewu2SCCkus4as
+  use_template_extension: true
+  entry_template: post.awesome
+  foo: bar
+layout: posts.html
+---
+POSTS-CONTENT-EXTENSION
