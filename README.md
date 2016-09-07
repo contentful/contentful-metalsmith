@@ -8,6 +8,10 @@ A Metalsmith' plugin to generate files using content from [Contentful](http://ww
 
 This plugin for [metalsmith](http://www.metalsmith.io) allows you to build a static site using the data stored at [Contentful](http://www.contentful.com). It is built on top of the [Contentful JavaScript Client](https://github.com/contentful/contentful.js).
 
+## Example
+
+To get an idea on how this works, you can check out an [example blog site](https://github.com/contentful-labs/contentful-metalsmith-example) which is completely generated using contentful-metalsmith.
+
 ## Getting started
 
 ### Install
