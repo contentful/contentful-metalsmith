@@ -293,3 +293,7 @@ layout: posts.html
 ---
 POSTS-CONTENT-DIFFERENT-SPACE
 ```
+
+## File meta available in template
+
+Contentful-metalsmith adds some [handy meta information](./file-meta.md) to the data available in data to make the generation of sites even easier.
