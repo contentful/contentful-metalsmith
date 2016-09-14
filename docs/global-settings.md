@@ -50,3 +50,29 @@ For using the [Content Delivery API](https://www.contentful.com/developers/docs/
 
 *Recommended way here is to set the `host` in the `metalsmith.json` or global config and overwrite it if needed in depending source files.*
 
+### 'filterTransforms' *(optional)*
+
+If you want to use dynamic values in a source file's filter query, you can provide an object containing named functions that will be invoked during the metalsmith build. For example, if you provide a configuration like this:
+
+```javascript
+{
+  filterTransforms: {
+    __NOW__() {
+      return (new Date()).toISOString();
+    },
+  }
+```
+
+You can then use the keyword `__NOW__` in your source file's `filter` values, like so:
+
+```markdown
+---
+title: Post overview of entries including "rabbit"
+contentful:
+  content_type: post
+  filter:
+    'startdate[lte]': '__NOW__'
+    'enddate[gt]': '__NOW__'
+layout: posts.html
+---
+```
