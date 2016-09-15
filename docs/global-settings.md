@@ -50,7 +50,7 @@ For using the [Content Delivery API](https://www.contentful.com/developers/docs/
 
 *Recommended way here is to set the `host` in the `metalsmith.json` or global config and overwrite it if needed in depending source files.*
 
-### 'filterTransforms' *(optional)*
+### `filterTransforms` *(optional)*
 
 If you want to use dynamic values in a source file's filter query, you can provide an object containing named functions that will be invoked during the metalsmith build. For example, if you provide a configuration like this:
 
