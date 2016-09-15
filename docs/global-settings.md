@@ -66,7 +66,7 @@ If you want to use dynamic values in a source file's filter query, you can provi
 }
 ```
 
-Note that you will need to store configuration as javascript, not JSON, in this case.
+Note that you will need to invoke metalsmith programatically & process configuration as javascript, not JSON, in this case.
 
 You can then use the keyword `__NOW__` in your source file's `filter` values, like so:
 
