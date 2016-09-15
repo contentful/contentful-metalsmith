@@ -56,12 +56,17 @@ If you want to use dynamic values in a source file's filter query, you can provi
 
 ```javascript
 {
+  // ...
   filterTransforms: {
     __NOW__() {
       return (new Date()).toISOString();
     },
-  }
+  },
+  // ...
+}
 ```
+
+Note that you will need to store configuration as javascript, not JSON, in this case.
 
 You can then use the keyword `__NOW__` in your source file's `filter` values, like so:
 
