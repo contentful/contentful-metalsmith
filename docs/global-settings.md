@@ -95,11 +95,15 @@ For example, find your five latest entries so you can include them in various te
     "latest": {
       "content_type": "post",
       "limit": 5,
-      "order": "sys.createdAt:
+      "order": "sys.createdAt"
     }
   },
   // ...
 }
 ```
 
-In templates you can then access `common.latest` to get the raw results of the above query.
+In templates you can then access `common.latest` to get the raw results of the above query:
+
+```
+The first latest post's title: {{ common.latest.items.0.fields.title }}
+```
