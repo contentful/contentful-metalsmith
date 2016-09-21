@@ -105,5 +105,5 @@ For example, find your five latest entries so you can include them in various te
 In templates you can then access `common.latest` to get the raw results of the above query:
 
 ```
-The first latest post's title: {{ common.latest.items.0.fields.title }}
+The first latest post's title, in handlebars syntax: {{ common.latest.items.0.fields.title }}
 ```
