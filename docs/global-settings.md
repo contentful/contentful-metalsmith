@@ -72,7 +72,7 @@ You can then use the keyword `__NOW__` in your source file's `filter` values, li
 
 ```markdown
 ---
-title: Post overview of entries including "rabbit"
+title: Articles with certain start and end dates
 contentful:
   content_type: post
   filter:
@@ -80,4 +80,30 @@ contentful:
     'enddate[gt]': '__NOW__'
 layout: posts.html
 ---
+```
+
+### `common` *(optional)*
+
+The results of queries placed in this property will be made available in all templates
+
+For example, find your five latest entries so you can include them in various templates:
+
+```javascript
+{
+  // ...
+  "common": {
+    "latest": {
+      "content_type": "post",
+      "limit": 5,
+      "order": "sys.createdAt"
+    }
+  },
+  // ...
+}
+```
+
+In templates you can then access `common.latest` to get the raw results of the above query:
+
+```
+The first latest post's title, in handlebars syntax: {{ common.latest.items.0.fields.title }}
 ```
