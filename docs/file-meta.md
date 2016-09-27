@@ -47,6 +47,7 @@ For further information check the [entry_template option](https://github.com/con
   </main>
 </body>
 </html>
+```
 
 ## data.contentTypes
 
