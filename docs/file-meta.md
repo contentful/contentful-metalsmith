@@ -32,7 +32,7 @@ This can be convenient when linking to child pages.
 
 ## _parentFileName
 
-**Which files:** entry pages of a collection
+**Which files:** child pages of a collection
 
 When rendering a collection page for a given content type and also rendering every entry of this content type the child page for each entry will include this parent file information.
 For further information check the [entry_template option](https://github.com/contentful-labs/contentful-metalsmith/blob/master/docs/source-file-settings.md#entry_template-optional).
@@ -47,3 +47,27 @@ For further information check the [entry_template option](https://github.com/con
   </main>
 </body>
 </html>
+
+## data.contentTypes
+
+**Which files:** collection page
+
+When rendering a collection page with `content_type: '*'` all the entries will also be available grouped per content type id at `data.contentTypes[contentTypeId]`.
+
+```md
+---
+title: Contentful Blog Example space - All Entries
+contentful:
+  content_type: '*'
+layout: entries.html
+---
+```
+
+
+```html
+<ul>
+  {{#each data.contentTypes.2wKn6yEnZewu2SCCkus4as }}
+    <li>{{fields.title}}</li>
+  {{/each}}
+</ul>
+```
