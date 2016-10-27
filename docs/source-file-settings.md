@@ -148,6 +148,28 @@ E.g.
 
 **Default value:** `${sys.contentType.sys.id}-${sys.id}`
 
+### `entry_filename_builder` *(optional)*
+
+**Use a custom function to generate the filename**
+
+`source/posts-that-need-fancy-filenames.html`
+
+```markdown
+---
+title: test__posts__filenameBuilder
+contentful:
+  content_type: 2wKn6yEnZewu2SCCkus4as
+  entry_filename_builder: aldente
+  entry_template: post.html
+layout: posts.html
+---
+POSTS-CONTENT-FILENAME-BUILDER
+```
+
+In your global configuration, define an object `filenameBuilders` with a property named to match `entity_filename_builder` with a function as its value. This function will be called with the arguments `entry` (the entry being processed) and `fileOptions`. Return the desired filename.
+
+Note that a function cannot be specified in the site configuration if it is stored as JSON; rather you will need to invoke Metalsmith programmatically to use this feature.
+
 ### `entry_id` *(optional)*
 
 **Render a file based on a single entry**

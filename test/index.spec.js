@@ -1,6 +1,7 @@
 import test from 'ava'
 import fs from 'fs'
 import Metalsmith from 'metalsmith'
+import slug from 'slug-component'
 
 const expectedResults = {
   postsCustomFileName: `Down the Rabbit HoleSeven Tips From Ernest Hemingway on How to Write Fiction
@@ -60,7 +61,12 @@ test.serial.cb('e2e - it propagate errors properly', t => {
 test.serial.cb('e2e - it should render all templates properly', t => {
   const metalsmith = createMetalsmith({
     space_id: 'w7sdyslol3fu',
-    access_token: 'baa905fc9cbfab17b1bc0b556a7e17a3e783a2068c9fd6ccf74ba09331357182'
+    access_token: 'baa905fc9cbfab17b1bc0b556a7e17a3e783a2068c9fd6ccf74ba09331357182',
+    filenameBuilders: {
+      aldente (entry) {
+        return `aldente-${slug(entry.fields.title)}.html`
+      }
+    }
   })
 
   metalsmith.build(error => {
@@ -121,8 +127,19 @@ test.serial.cb('e2e - it should render all templates properly', t => {
       fs.readFileSync(`${__dirname}/build/post-down-the-rabbit-hole.html`, { encoding: 'utf8' }),
       expectedResults.posts.downTheRabbitHole
     )
+
     t.is(
       fs.readFileSync(`${__dirname}/build/post-seven-tips-from-ernest-hemingway-on-how-to-write-fiction.html`, { encoding: 'utf8' }),
+      expectedResults.posts.sevenTips
+    )
+
+    t.is(
+      fs.readFileSync(`${__dirname}/build/aldente-seven-tips-from-ernest-hemingway-on-how-to-write-fiction.html`, { encoding: 'utf8' }),
+      expectedResults.posts.sevenTips
+    )
+
+    t.is(
+      fs.readFileSync(`${__dirname}/build/aldente-seven-tips-from-ernest-hemingway-on-how-to-write-fiction.html`, { encoding: 'utf8' }),
       expectedResults.posts.sevenTips
     )
 
