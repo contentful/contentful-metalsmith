@@ -20,6 +20,8 @@ function plugin (options) {
    * @param  {Function} done       success callback
    */
   return function (files, metalsmith, done) {
+    options.metadata = metalsmith.metadata()
+
     return new Promise(resolve => {
       resolve(Object.keys(files))
     })
