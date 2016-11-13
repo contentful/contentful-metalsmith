@@ -33,7 +33,9 @@ When you use metalsmith using the [cli](https://github.com/metalsmith/metalsmith
   "plugins": {
     "contentful-metalsmith": {
       "access_token": "YOUR_CONTENTFUL_ACCESS_TOKEN",
-      "space_id": "YOUR_CONTENTFUL_SPACE_ID"
+      "space_id": "YOUR_CONTENTFUL_SPACE_ID",
+      "entry_key": "_key",
+      "entry_extension": "md"
     }
   }
 }
@@ -52,6 +54,8 @@ metalsmith.use(require('contentful-metalsmith')({ 'access_token' : 'YOUR_CONTENT
 
 - `acccess_token`
 - `space_id`
+- `entry_key`
+- `entry_extension`
 
 You can find the `access_token` and `space_id` in your [app](https://app.contentful.com) at `APIs -> Content delivery API Keys`.
 
