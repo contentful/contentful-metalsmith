@@ -11,7 +11,9 @@ You can find these in your [app](https://app.contentful.com) at `APIs -> Content
     "contentful-metalsmith": {
       "access_token" : "YOUR_CONTENTFUL_ACCESS_TOKEN",
       "space_id": "YOUR_CONTENTFUL_SPACE_ID",
-      "host": "preview.contentful.com"
+      "host": "preview.contentful.com",
+      "entry_key": "_key",
+      "entry_extension": "md"
     }
   }
 }
@@ -49,6 +51,16 @@ and change the `host` property to `preview.contentful.com`.
 For using the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/) you can ignore this option, as it is defaulting to **Content Delivery API**.
 
 *Recommended way here is to set the `host` in the `metalsmith.json` or global config and overwrite it if needed in depending source files.*
+
+### `entry_key` *(optional)*
+
+If you want to transform Contentful data into pages you can specify a `entry_key` which will be used to replace the key of all file objects with the stored Contentful key path. You must specify a path to the file as if it was referenced from your `src` directory and exclude the extension. 
+
+For example, if you specify `entry_key`: `_key`, then create a Contentful entry with a `_key` property set to `pages/index` a file will be referenced in Metalsmith with `pages/index.md` (assuming you specify `entry_extension` as `md`)
+
+### `entry_extension` *(optional)*
+
+If you specify `entry_key`, you will need to specify the entry extension for all file keys. This will be appended to the key on Contentful entries that contain the `entry_key`.
 
 ### `filterTransforms` *(optional)*
 
