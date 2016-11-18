@@ -15,7 +15,7 @@ You can find these in your [app](https://app.contentful.com) at `APIs -> Content
       "entry_key": "_key",
       "entry_extension": "md",
       "contentful": {
-        content_type: "2wKn6yEnZewu2SCCkus4as"
+        "content_type": "2wKn6yEnZewu2SCCkus4as"
       }
     }
   }

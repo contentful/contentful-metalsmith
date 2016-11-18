@@ -37,7 +37,7 @@ When you use metalsmith using the [cli](https://github.com/metalsmith/metalsmith
       "entry_key": "_key",
       "entry_extension": "md",
       "contentful": {
-        content_type: "2wKn6yEnZewu2SCCkus4as"
+        "content_type": "2wKn6yEnZewu2SCCkus4as"
       }
     }
   }
