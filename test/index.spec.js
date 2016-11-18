@@ -34,15 +34,21 @@ test__posts__ordered-POSTS-CONTENT-ORDERED\n`,
  * @return {Object}       metalsmith instance
  *
  */
-function createMetalsmith (config = {}) {
+function createMetalsmith (config = {}, markdown) {
   const metalsmith = new Metalsmith(__dirname)
 
   metalsmith.use(
     require('..')(config)
   )
-  metalsmith.use(
-    require('metalsmith-layouts')({ engine: 'handlebars' })
-  )
+  if (markdown) {
+    metalsmith.use(
+      require('metalsmith-markdown')()
+    )
+  } else {
+    metalsmith.use(
+      require('metalsmith-layouts')({ engine: 'handlebars' })
+    )
+  }
 
   metalsmith.source(config.src || 'src')
   metalsmith.destination(config.dest || 'build')
@@ -204,7 +210,7 @@ test.serial.cb('e2e - it should render all templates properly', t => {
   })
 })
 
-test.serial.cb('e2e - it should render file from contentful', t => {
+test.serial.cb.only('e2e - it should render file from contentful', t => {
   /* eslint camelcase: 0 */
   const space_id = 'w7sdyslol3fu'
   const access_token = 'baa905fc9cbfab17b1bc0b556a7e17a3e783a2068c9fd6ccf74ba09331357182'
@@ -229,7 +235,7 @@ test.serial.cb('e2e - it should render file from contentful', t => {
         return `aldente-${slug(entry.fields.title)}.html`
       }
     }
-  })
+  }, true)
 
   metalsmith.build(error => {
     if (error) {
@@ -244,6 +250,11 @@ test.serial.cb('e2e - it should render file from contentful', t => {
     t.is(
       fs.readdirSync(`${__dirname}/entry_key_build/`)[0],
       'pages'
+    )
+
+    t.is(
+      fs.readFileSync(`${__dirname}/entry_key_build/pages/index.html`, { encoding: 'utf8' }),
+      '<p>Home Page Content</p>\n'
     )
 
     t.end()
