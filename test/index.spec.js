@@ -210,7 +210,7 @@ test.serial.cb('e2e - it should render all templates properly', t => {
   })
 })
 
-test.serial.cb.only('e2e - it should render file from contentful', t => {
+test.serial.cb('e2e - it should render file from contentful', t => {
   /* eslint camelcase: 0 */
   const space_id = 'w7sdyslol3fu'
   const access_token = 'baa905fc9cbfab17b1bc0b556a7e17a3e783a2068c9fd6ccf74ba09331357182'
