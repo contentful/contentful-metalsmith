@@ -35,7 +35,10 @@ When you use metalsmith using the [cli](https://github.com/metalsmith/metalsmith
       "access_token": "YOUR_CONTENTFUL_ACCESS_TOKEN",
       "space_id": "YOUR_CONTENTFUL_SPACE_ID",
       "entry_key": "_key",
-      "entry_extension": "md"
+      "entry_extension": "md",
+      "contentful": {
+        content_type: "2wKn6yEnZewu2SCCkus4as"
+      }
     }
   }
 }
