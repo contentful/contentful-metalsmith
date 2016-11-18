@@ -97,7 +97,7 @@ layout: posts.html
 ---
 ```
 
-### [`contentful` *(optional)*](/source-file-settings.md)
+### [`contentful` *(optional)*](source-file-settings.md)
 
 ### `common` *(optional)*
 
