@@ -97,6 +97,8 @@ layout: posts.html
 ---
 ```
 
+### [`contentful` *(optional)*](/source-file-settings.md)
+
 ### `common` *(optional)*
 
 The results of queries placed in this property will be made available in all templates
