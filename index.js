@@ -39,7 +39,7 @@ function plugin (options) {
   return function (files, metalsmith, done) {
     options.metadata = metalsmith.metadata()
 
-    if (!Object.keys(files).length && options.entry_key) {
+    if (options.entry_key) {
       return processor.createFilesFromEntries(options)
         .then((fileMaps) => {
           Object.assign(files, fileMaps)

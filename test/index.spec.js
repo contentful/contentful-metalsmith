@@ -248,7 +248,7 @@ test.serial.cb('e2e - it should render file from contentful', t => {
     )
 
     t.is(
-      fs.readdirSync(`${__dirname}/entry_key_build/`)[0],
+      fs.readdirSync(`${__dirname}/entry_key_build/`)[1],
       'pages'
     )
 
