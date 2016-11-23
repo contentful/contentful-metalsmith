@@ -17,12 +17,12 @@ To get an idea on how this works, you can check out an [example blog site](https
 ### Install
 
 ```bash
-$ npm install contentful-metalsmith
+$ npm install contentful-metalsmith --save
 ```
 
 ### Configure required globals
 
-When you use metalsmith using the [cli](https://github.com/metalsmith/metalsmith#cli) edit your `metalsmith.json` and add `contentful-metalsmith` in the plugins section.
+When using the [metalsmith cli](https://github.com/metalsmith/metalsmith#cli) you can edit your `metalsmith.json` and add `contentful-metalsmith` in the plugins section.
 
 ```javascript
 // metalsmith.json
@@ -50,7 +50,14 @@ When you use the [JavaScript Api](https://github.com/metalsmith/metalsmith#api) 
 metalsmith.source('src')
 metalsmith.destination('build')
 
-metalsmith.use(require('contentful-metalsmith')({ 'access_token' : 'YOUR_CONTENTFUL_ACCESS_TOKEN' }))
+metalsmith.use(require('contentful-metalsmith')({
+	'access_token': 'YOUR_CONTENTFUL_ACCESS_TOKEN',
+	'entry_key': '_key',
+	'entry_extension': 'md',
+	'contentful': {
+		'content_type': '2wKn6yEnZewu2SCCkus4as'
+	}
+}))
 ```
 
 **Global parameters:**
