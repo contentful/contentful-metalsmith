@@ -225,6 +225,23 @@ Post that include rabbits are...
 
 If you want to learn more about the filter syntax, check out the [Content Delivery API documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters).
 
+### `include` *(optional)*
+
+**Retrieval of linked items (maximum of 10 levels)**
+
+```markdown
+---
+title: Posts with up to 10 levels of linked items retrieved
+contentful:
+  content_type: post
+  include: 10
+layout: posts.html
+---
+posts with retrieved links are...
+```
+
+If you want to learn more about retrieval of linked items, check out the [Content Delivery API documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/links).
+
 ### `limit` *(optional)*
 
 **Limit the entries before rendering to one or multiple files**
@@ -241,6 +258,23 @@ layout: posts.html
 ```
 
 If you want to learn more about limits, check out the [Content Delivery API documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/limit).
+
+### `locale` *(optional)*
+
+**Specify the locale used for entries**
+
+```markdown
+---
+title: Posts in Traditional Chinese Hong Kong
+contentful:
+  content_type: post
+  locale: zh-Hant-HK
+layout: posts.html
+---
+posts in Traditional Chinese Hong Kong are...
+```
+
+If you want to learn more about locales, check out the [Content Delivery API documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/localization).
 
 ### `order` *(optional)*
 
