@@ -14,8 +14,12 @@ test__posts__permalinks-POSTS-CONTENT-PERMALINKS\n`,
 test__posts__extentsion-POSTS-CONTENT-EXTENSION\n`,
   postsFiltered: `Down the Rabbit Hole
 test__posts__filtered-POSTS-CONTENT-FILTERED\n`,
+  postsInclude: `Down the Rabbit HoleSeven Tips From Ernest Hemingway on How to Write Fiction
+test__posts-POSTS-INCLUDE\n`,
   postsLimited: `Down the Rabbit Hole
 test__posts__limited-POSTS-CONTENT-LIMITED\n`,
+  postsLocale: `Down the Rabbit HoleSeven Tips From Ernest Hemingway on How to Write Fiction
+test__posts__locale-POSTS-CONTENT-LOCALE\n`,
   postsOrdered: `Seven Tips From Ernest Hemingway on How to Write FictionDown the Rabbit Hole
 test__posts__ordered-POSTS-CONTENT-ORDERED\n`,
   posts: {
@@ -100,11 +104,27 @@ test.serial.cb('e2e - it should render all templates properly', t => {
     )
 
     //
+    // render include posts
+    //
+    t.is(
+      fs.readFileSync(`${__dirname}/build/posts-include.html`, { encoding: 'utf8' }),
+      expectedResults.postsInclude
+    )
+
+    //
     // render limited posts
     //
     t.is(
       fs.readFileSync(`${__dirname}/build/posts-limited.html`, { encoding: 'utf8' }),
       expectedResults.postsLimited
+    )
+
+    //
+    // render locale posts
+    //
+    t.is(
+      fs.readFileSync(`${__dirname}/build/posts-locale.html`, { encoding: 'utf8' }),
+      expectedResults.postsLocale
     )
 
     //
