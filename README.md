@@ -50,7 +50,7 @@ metalsmith.use(require('contentful-metalsmith')({ 'access_token' : 'YOUR_CONTENT
 
 **Global parameters:**
 
-- `acccess_token`
+- `access_token`
 - `space_id`
 
 You can find the `access_token` and `space_id` in your [app](https://app.contentful.com) at `APIs -> Content delivery API Keys`.
