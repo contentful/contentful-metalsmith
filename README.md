@@ -1,5 +1,5 @@
 # contentful-metalsmith
-[![Build Status](https://travis-ci.org/contentful-labs/contentful-metalsmith.svg?branch=master)](https://travis-ci.org/contentful-labs/contentful-metalsmith)
+[![Build Status](https://travis-ci.org/contentful/contentful-metalsmith.svg?branch=master)](https://travis-ci.org/contentful/contentful-metalsmith)
 [![Coverage Status](https://coveralls.io/repos/github/contentful-labs/contentful-metalsmith/badge.svg?branch=refactor)](https://coveralls.io/github/contentful-labs/contentful-metalsmith?branch=refactor)
 
 A Metalsmith' plugin to generate files using content from [Contentful](http://www.contentful.com)
