@@ -70,7 +70,8 @@ We're considering that you use [metalsmith-layouts](https://github.com/superwolf
 title: metalsmith-contentful file
 contentful:
   content_type: post
-  layout: post.html
+  entry_filename_pattern: blog/post-${ sys.id }
+  entry_template: post.html
 layout: posts.html
 ---
 
