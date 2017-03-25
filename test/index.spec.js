@@ -2,6 +2,7 @@ import test from 'ava'
 import fs from 'fs'
 import Metalsmith from 'metalsmith'
 import slug from 'slug-component'
+import nock from 'nock'
 
 const expectedResults = {
   postsCustomFileName: `Down the Rabbit HoleSeven Tips From Ernest Hemingway on How to Write Fiction
@@ -37,18 +38,24 @@ test__posts__ordered-POSTS-CONTENT-ORDERED\n`,
  * @return {Object}       metalsmith instance
  *
  */
-function createMetalsmith (config = {}) {
+function createMetalsmith (config = {}, markdown) {
   const metalsmith = new Metalsmith(__dirname)
 
   metalsmith.use(
     require('..')(config)
   )
-  metalsmith.use(
-    require('metalsmith-layouts')({ engine: 'handlebars' })
-  )
+  if (markdown) {
+    metalsmith.use(
+      require('metalsmith-markdown')()
+    )
+  } else {
+    metalsmith.use(
+      require('metalsmith-layouts')({ engine: 'handlebars' })
+    )
+  }
 
-  metalsmith.source('src')
-  metalsmith.destination('build')
+  metalsmith.source(config.src || 'src')
+  metalsmith.destination(config.dest || 'build')
 
   return metalsmith
 }
@@ -56,6 +63,20 @@ function createMetalsmith (config = {}) {
 test.serial.cb('e2e - it propagate errors properly', t => {
   const metalsmith = createMetalsmith({})
 
+  metalsmith.build(error => {
+    t.is(error instanceof Error, true)
+    t.end()
+  })
+})
+
+test.serial.cb('e2e - it propagates error for no files properly', t => {
+  const metalsmith = createMetalsmith({
+    src: 'entry_key_src',
+    dest: 'entry_key_build',
+    entry_key: '_key',
+    entry_extension: 'md',
+    contentful: null
+  })
   metalsmith.build(error => {
     t.is(error instanceof Error, true)
     t.end()
@@ -203,6 +224,57 @@ test.serial.cb('e2e - it should render all templates properly', t => {
     t.is(
       fs.readFileSync(`${__dirname}/build/2wKn6yEnZewu2SCCkus4as-A96usFSlY4G0W4kwAqswk.awesome`, { encoding: 'utf8' }),
       expectedResults.posts.sevenTips
+    )
+
+    t.end()
+  })
+})
+
+test.serial.cb('e2e - it should render file from contentful', t => {
+  /* eslint camelcase: 0 */
+  const space_id = 'w7sdyslol3fu'
+  const access_token = 'baa905fc9cbfab17b1bc0b556a7e17a3e783a2068c9fd6ccf74ba09331357182'
+  const res = require('./fixtures/res')
+  const contentful = nock('https://cdn.contentful.com:443')
+    .get(`/spaces/${space_id}/entries`)
+    .query({'content_type': '2wKn6yEnZewu2SCCkus4as'})
+    .reply(200, res)
+
+  const metalsmith = createMetalsmith({
+    src: 'entry_key_src',
+    dest: 'entry_key_build',
+    space_id,
+    access_token,
+    contentful: {
+      content_type: '2wKn6yEnZewu2SCCkus4as'
+    },
+    entry_key: '_key',
+    entry_extension: 'md',
+    filenameBuilders: {
+      aldente (entry) {
+        return `aldente-${slug(entry.fields.title)}.html`
+      }
+    }
+  }, true)
+
+  metalsmith.build(error => {
+    if (error) {
+      throw error
+    }
+
+    t.is(
+      contentful.isDone(),
+      true
+    )
+
+    t.is(
+      fs.readdirSync(`${__dirname}/entry_key_build/`)[1],
+      'pages'
+    )
+
+    t.is(
+      fs.readFileSync(`${__dirname}/entry_key_build/pages/index.html`, { encoding: 'utf8' }),
+      '<p>Home Page Content</p>\n'
     )
 
     t.end()

@@ -3,6 +3,23 @@
 const processor = require('./lib/processor')
 
 /**
+ * Handles errors
+ * @param  {Function} done  done callback
+ * @param  {object}   error error object
+ */
+function handleError (done, error) {
+  // friendly error formatting to give
+  // more information in error case by api
+  // -> see error.details
+  done(
+    new Error(`
+      ${error.message}
+      ${error.details ? JSON.stringify(error.details, null, 2) : ''}
+    `)
+  )
+}
+
+/**
  * Plugin function
  *
  * @param {Object|undefined} options
@@ -21,6 +38,16 @@ function plugin (options) {
    */
   return function (files, metalsmith, done) {
     options.metadata = metalsmith.metadata()
+
+    if (options.entry_key) {
+      return processor.createFilesFromEntries(options)
+        .then((fileMaps) => {
+          Object.assign(files, fileMaps)
+
+          done()
+        })
+        .catch(handleError.bind(null, done))
+    }
 
     return new Promise(resolve => {
       resolve(Object.keys(files))
@@ -41,17 +68,7 @@ function plugin (options) {
 
       done()
     })
-    .catch((error) => {
-      // friendly error formatting to give
-      // more information in error case by api
-      // -> see error.details
-      done(
-        new Error(`
-          ${error.message}
-          ${error.details ? JSON.stringify(error.details, null, 2) : ''}
-        `)
-      )
-    })
+    .catch(handleError.bind(null, done))
   }
 }
 
