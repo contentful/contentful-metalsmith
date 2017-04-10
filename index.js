@@ -1,6 +1,7 @@
 'use strict'
 
 const processor = require('./lib/processor')
+const debug = require('debug')('metalsmith-contentful-files')
 
 /**
  * Plugin function
@@ -22,6 +23,9 @@ function plugin (options) {
   return function (files, metalsmith, done) {
     options.metadata = metalsmith.metadata()
 
+    debug('Files before processing:')
+    debug(files)
+
     return new Promise(resolve => {
       resolve(Object.keys(files))
     })
@@ -38,6 +42,9 @@ function plugin (options) {
       fileMaps.forEach(map => {
         Object.assign(files, map)
       })
+
+      debug('Files after processing:')
+      debug(files)
 
       done()
     })

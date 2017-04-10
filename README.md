@@ -136,6 +136,27 @@ layout: posts.html
 
 To read more on source file parameters and settings read the [source file documentation](./docs/source-file-settings.md).
 
+## Debugging
+
+This project uses [debug](https://www.npmjs.com/package/debug) under the hood. If you want to see all debug messages by contentful-metalsmith you can do so by setting a wildcard debug environment variable.
+
+```bash
+$ DEBUG=metalsmith-contentful* your command
+```
+
+Currently there are two different variables available to give you information about a specific area:
+
+- `metalsmith-contentful-files` - get information about file data before/after processing
+- `metalsmith-contentful-queries` - get information about queries and related files
+
+For example if you want to see what files went into the plugin and got out again:
+
+```bash
+$ DEBUG=metalsmith-contentful-files your command
+```
+
+:point_up: *This debug information is good to validate what data is available in [metalsmith-layouts](https://www.npmjs.com/package/metalsmith-layouts).*
+
 # License
 
 MIT
