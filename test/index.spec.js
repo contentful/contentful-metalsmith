@@ -120,6 +120,14 @@ test.serial.cb('e2e - it should render all templates properly', t => {
     )
 
     //
+    // render limited posts
+    //
+    t.is(
+      fs.readFileSync(`${__dirname}/build/posts-limited-skipped.html`, { encoding: 'utf8' }),
+      expectedResults.postsLimited
+    )
+
+    //
     // render locale posts
     //
     t.is(
