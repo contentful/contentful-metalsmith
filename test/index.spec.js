@@ -18,6 +18,8 @@ test__posts__filtered-POSTS-CONTENT-FILTERED\n`,
 test__posts-POSTS-INCLUDE\n`,
   postsLimited: `Down the Rabbit Hole
 test__posts__limited-POSTS-CONTENT-LIMITED\n`,
+  postsLimitedSkipped: `Seven Tips From Ernest Hemingway on How to Write Fiction
+test__posts__limited__skipped-POSTS-CONTENT-LIMITED\n`,
   postsLocale: `Down the Rabbit HoleSeven Tips From Ernest Hemingway on How to Write Fiction
 test__posts__locale-POSTS-CONTENT-LOCALE\n`,
   postsOrdered: `Seven Tips From Ernest Hemingway on How to Write FictionDown the Rabbit Hole
@@ -117,6 +119,14 @@ test.serial.cb('e2e - it should render all templates properly', t => {
     t.is(
       fs.readFileSync(`${__dirname}/build/posts-limited.html`, { encoding: 'utf8' }),
       expectedResults.postsLimited
+    )
+
+    //
+    // render limited posts
+    //
+    t.is(
+      fs.readFileSync(`${__dirname}/build/posts-limited-skipped.html`, { encoding: 'utf8' }),
+      expectedResults.postsLimitedSkipped
     )
 
     //
