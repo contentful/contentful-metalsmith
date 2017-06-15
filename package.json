@@ -2,6 +2,7 @@
   "name": "contentful-metalsmith",
   "description": "A Metalsmith's plugin to get content from Contentful",
   "main": "index.js",
+  "version": "99.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/contentful-labs/contentful-metalsmith.git"
