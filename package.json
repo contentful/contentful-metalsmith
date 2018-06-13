@@ -2,6 +2,7 @@
   "name": "contentful-metalsmith",
   "description": "A Metalsmith's plugin to get content from Contentful",
   "main": "index.js",
+  "version": "99.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/contentful-labs/contentful-metalsmith.git"
@@ -12,7 +13,7 @@
     "node": ">=4"
   },
   "dependencies": {
-    "contentful": "^3.5.0",
+    "contentful": "^6.1.1",
     "debug": "^2.6.3",
     "lodash.pick": "^4.4.0",
     "lodash.template": "^4.4.0",
