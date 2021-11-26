@@ -2,6 +2,9 @@
 [![Build Status](https://travis-ci.org/contentful/contentful-metalsmith.svg?branch=master)](https://travis-ci.org/contentful/contentful-metalsmith)
 [![Coverage Status](https://coveralls.io/repos/github/contentful-labs/contentful-metalsmith/badge.svg?branch=refactor)](https://coveralls.io/github/contentful-labs/contentful-metalsmith?branch=refactor)
 
+> **Note**: This tool is no longer officially supported as of Nov 26th, 2021.
+> You can feel free to use it, fork it and patch it for your own needs.
+
 A Metalsmith' plugin to generate files using content from [Contentful](http://www.contentful.com)
 
 ## About
